@@ -1,0 +1,17 @@
+.my-nav-section {
+	width: 800px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.my-nav-section li {
+	line-height: 36px;
+}
+
+.my-nav {
+	float: left;
+	margin-right: 15px;
+	border-left: 1px dashed #b5e853;
+	min-height: 500px;
+	padding-left: 15px;
+}
