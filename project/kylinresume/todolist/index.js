@@ -67,6 +67,9 @@ $('#J-ongoing-ul').on('click', '.J-checkbox', function() {
 ongoingRef.on('child_removed',function(snap){
   var id = snap.key();
   $('#' + id).parent().remove();
+  var num_ongoing = +$('.J-num-ongoing').html();
+  num_ongoing--;
+  $('.J-num-ongoing').html(num_ongoing);
 });
 
 $('.J-list-btn').on('click', function() {
