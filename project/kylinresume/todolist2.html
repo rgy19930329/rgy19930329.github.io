@@ -37,7 +37,7 @@
     };
     wilddog.initializeApp(config);
 
-    var ref = wilddog.sync().ref();
+    var ref = wilddog.sync().ref().child('todolist');
     var ongoingRef = ref.child('ongoing');
 
     wu.each(ongoingRef, function(item, id) {
