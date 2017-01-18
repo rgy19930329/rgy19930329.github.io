@@ -23,6 +23,8 @@ h4 span {
 h4 .number {
   float: right;
   margin-right: 5px;
+  position: relative;
+  top: 4px;
 }
 
 ul {
@@ -32,12 +34,28 @@ ul {
 
 li {
   border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   line-height: 36px;
   transition: all 300ms;
+  overflow: hidden;
+}
+
+li .item-content {
+  display: block;
+  float: left;
+  width: 270px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ul:nth-of-type(2) .item-content, ul:nth-of-type(3) .item-content {
+  width: 290px;
 }
 
 li:hover {
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .icon-del {
@@ -46,12 +64,12 @@ li:hover {
   border-radius: 50%;
   display: inline-block;
   width: 20px;
-  height: 20px;
+  height: 21px;
   text-align: center;
   line-height: 20px;
   float: right;
   position: relative;
-  top: 5px;
+  top: 6px;
   transition: all 300ms;
 }
 
@@ -64,6 +82,7 @@ input[type="checkbox"] {
   display: inline-block;
   width: 20px;
   height: 20px;
+  float: left;
   position: relative;
-  top: 5px;
+  top: 6px;
 }
