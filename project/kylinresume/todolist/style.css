@@ -13,6 +13,16 @@
   box-sizing: border-box;
   padding-top: 5px;
   padding-bottom: 5px;
+  overflow: hidden;
+}
+
+h4 span {
+  cursor: pointer;
+}
+
+h4 .number {
+  float: right;
+  margin-right: 5px;
 }
 
 ul {
@@ -51,6 +61,9 @@ li:hover {
 
 input[type="checkbox"] {
   margin-right: 4px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
   position: relative;
-  top: 1px;
+  top: 5px;
 }
