@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>todolist - kylin</title>
+  <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://rgy19930329.github.io/lib/wilddogutils.js"></script>
+  <script src="https://rgy19930329.github.io/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://rgy19930329.github.io/lib/bootstrap/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>todolist</h1>
+    <div>
+      <input type="text" name="entry" placeholder="添加任务">
+    </div>
+    <ul id="J-ongoing-ul"></ul>
+  </div>
+  <script type="text/javascript">
+  
+    var ref = new Wilddog('https://kylin.wilddogio.com/todolist');
+    var ongoingRef = ref.child('ongoing');
+
+    wu.each(ongoingRef, function(item, id) {
+      $('<li>' + item + 
+          '<span class="glyphicon glyphicon-remove J-del-btn" id=' + id + '></span>' +
+        '</li>')
+      .appendTo('#J-ongoing-ul');
+    });
+
+    $('input[name=entry]').on('keypress', function(e) {
+      if(e.keyCode == 13) {
+        var item = $(this).val();
+        if($.trim(item)) {
+          $(this).val('');
+          wu.add(ongoingRef, item);
+        } 
+      }
+    });
+
+    $('#J-ongoing-ul').on('click', '.J-del-btn', function() {
+      var id = $(this).attr('id');
+      wu.remove(ongoingRef, id);
+    });
+
+    ongoingRef.on('child_removed',function(snap){
+      var id = snap.key();
+      $('#' + id).parent().remove();
+    });
+
+  </script>
+</body>
+</html>
