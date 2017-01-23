@@ -10,3 +10,12 @@ ul {
 li {
   list-style: none;
 }
+
+/*--------------*/
+.oh {overflow: hidden;}
+.fr {float: right;}
+.fl {float: left;}
+.tc {text-align: center;}
+.tl {text-align: left;}
+.tr {text-align: right;}
+.clearfix {clear: both;}
