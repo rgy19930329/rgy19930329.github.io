@@ -11,7 +11,7 @@ var Page = {
 	_initData: function() {
 		var _this = this;
 		ref.on('value', function(snap) {
-			var text = snap.val();
+			var text = $.escape2Html( snap.val() );
 			_this._updateTpl(text);
 		});
 	},
