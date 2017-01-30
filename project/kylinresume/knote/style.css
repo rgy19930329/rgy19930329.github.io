@@ -1,0 +1,73 @@
+.wrap {
+	width: 90%;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+	line-height: 80px;
+  margin-bottom: 0;
+}
+
+.icon-logo {
+	width: 40px;
+	height: 40px;
+}
+
+.note-area {
+  position: relative;
+}
+
+.note-effect-box {
+  height: 300px;
+  width: 0;
+  position: absolute;
+  transition: all 500ms;
+  background-image: linear-gradient(to right, #fff, #FF7256);
+  border-radius: 10px;
+}
+
+.status-save {
+  width: 100%;
+}
+
+.notepad {
+  position: relative;
+  box-sizing: border-box;
+	width: 100%;
+	height: 300px;
+  margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 45px;
+	background-image: linear-gradient(to bottom, steelblue, steelblue 100%);
+  background-repeat: no-repeat;
+  background-size: 1px 100%;
+  background-position: 40px 0;
+}
+
+.notepad-write-area {
+  box-sizing: border-box;
+  height: 100%;
+  border-top: 2px steelblue solid;
+  border-bottom: 2px steelblue solid;
+  overflow: auto;
+}
+
+.notepad-content {
+  outline: none;
+  min-height: 100%;
+  background-image: linear-gradient(to top, steelblue, steelblue 1px, transparent 1px);
+  background-repeat: repeat;
+  background-size: 100% 30px;
+  line-height: 30px;
+  padding-left: 50px;
+}
+
+.select-date {
+  position: absolute;
+  font-size: 16px;
+  left: 50px;
+  top: 10px;
+  padding: 4px;
+  border: 1px dashed #ddd;
+}
