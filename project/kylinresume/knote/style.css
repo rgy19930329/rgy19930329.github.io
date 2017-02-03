@@ -63,11 +63,31 @@ h1 {
   padding-left: 50px;
 }
 
-.select-date {
+.hanlde-area {
   position: absolute;
-  font-size: 16px;
   left: 50px;
   top: 10px;
+}
+
+.select-date {
+  font-size: 16px;
   padding: 4px;
   border: 1px dashed #ddd;
+  text-align: center;
 }
+
+.icon-hanlde {
+  display: inline-block;
+  border: 1px dashed #ddd;
+  width: 50px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-hanlde:hover {
+  background: #eee;
+}
+
+

@@ -27,6 +27,8 @@ var Page = {
     this.$selectDate = $('#J-select-date');
     this.$noteContent = $('#J-note-content');
     this.$effectBox = $('#J-effect-box');
+    this.$subBtn = $('#J-btn-sub');
+    this.$addBtn = $('#J-btn-add');
   },
   _initDatePicker: function() {
     var currYear = (new Date()).getFullYear();
@@ -61,6 +63,7 @@ var Page = {
   },
   _initEvent: function() {
     var _this = this;
+    // 监听内容区的输入
     this.$noteContent.on('input', debounce(function() {
       var note = $.safeStr($(this).html()),
           date = _this.$selectDate.val();
@@ -75,6 +78,31 @@ var Page = {
         _this.$effectBox.toggleClass('status-save');
       }, 600);
     }, 1000));
+
+    // 监听“昨天”按钮
+    this.$subBtn.on('click', function() {
+      var currDate = _this.$selectDate.val();
+      var date = _this._getDate(currDate, -1);
+      _this.$selectDate.val(date);
+      _this.$selectDate.trigger('change');
+    });
+    // 监听“明天”按钮
+    this.$addBtn.on('click', function() {
+      var currDate = _this.$selectDate.val();
+      var date = _this._getDate(currDate, 1);
+      _this.$selectDate.val(date);
+      _this.$selectDate.trigger('change');
+    });
+  },
+  // @desc 获取日期 yyyy-MM-dd
+  // @param number [number] -1: 上一天, 1: 下一天
+  _getDate: function(date, number) {
+    var dd = new Date(date);
+    dd.setDate(dd.getDate() + number);
+    var y = dd.getFullYear();
+    var m = (dd.getMonth() + 1) < 9 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1;
+    var d = dd.getDate() < 9 ? '0' + dd.getDate() : dd.getDate();
+    return y + "-" + m + "-" + d;
   },
   _saveNote: function(date, note) {
     ref.child(date).set(note);
