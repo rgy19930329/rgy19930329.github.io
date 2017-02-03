@@ -74,12 +74,13 @@ h1 {
   padding: 4px;
   border: 1px dashed #ddd;
   text-align: center;
+  width: 110px;
 }
 
 .icon-hanlde {
   display: inline-block;
   border: 1px dashed #ddd;
-  width: 50px;
+  width: 30px;
   height: 26px;
   line-height: 26px;
   text-align: center;
