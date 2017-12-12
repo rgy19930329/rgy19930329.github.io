@@ -9,10 +9,53 @@
   <title>AOAL 算法列表</title>
   <link href="http://kylinresume-mydir.stor.sinaapp.com/img%2Flogo.ico" rel="shortcut icon">
   <script src="http://kylinresume-mydir.stor.sinaapp.com/library%2Fjquery.min.js"></script>
+  <style type="text/css">
+  	ul li {
+  		line-height: 30px;
+  	}
+  </style>
 </head>
 
 <body>
-	
+	<ul id="navs"></ul>
+
+	<script type="text/javascript">
+		var data = [
+			{ name: '迪杰斯特拉算法' },
+			{ name: '堆排序算法' },
+			{ name: '队列（queue）' },
+			{ name: '二叉排序树' },
+			{ name: '二叉树前中后序遍历' },
+			{ name: '关键路径（AOE-网）' },
+			{ name: '归并排序算法'},
+			{ name: '哈夫曼树' },
+			{ name: '基数排序算法' },
+			{ name: '克鲁斯卡尔算法' },
+			{ name: '快速排序算法' },
+			{ name: '链表（linklist）' },
+			{ name: '冒泡排序算法' },
+			{ name: '普里姆算法' },
+			{ name: '拓扑排序（AOV-网）' },
+			{ name: '桶排序算法' },
+			{ name: '图的遍历' },
+			{ name: '图的存储' },
+			{ name: '希尔排序算法' },
+			{ name: '选择排序算法' },
+			{ name: '栈（stack）' },
+			{ name: '折半插入排序算法' },
+			{ name: '直接插入排序算法' }
+		];
+	</script>
+	<script type="text/javascript">
+		var str = '';
+
+		for(var i = 0; i < data.length; i++) {
+			var item = data[i];
+			str += '<li><a href="https://rgy19930329.github.io/project/aoal/items/' + item.name + '/index.html">' + item.name + '</a></li>';
+		}
+
+		$('#navs').html(str);
+	</script>
 </body>
 
 </html>
