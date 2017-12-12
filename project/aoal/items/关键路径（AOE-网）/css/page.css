@@ -1,0 +1,183 @@
+
+.middle {
+	
+}
+
+ul {
+	overflow: hidden;
+}
+
+li {
+	height: 290px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#firstItem {
+	transform: scale(0);
+}
+
+/*--------------------------------*/
+
+.graph {
+	display: block;
+	background: rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+}
+
+.graph div:nth-child(1){
+	left: 0;
+	top: 80px;
+}
+
+.graph div:nth-child(2){
+	left: 200px;
+	top: 0;
+}
+
+.graph div:nth-child(3){
+	left: 200px;
+	top: 150px;
+}
+
+.graph div:nth-child(4){
+	left: 200px;
+	top: 240px;
+}
+
+.graph div:nth-child(5){
+	left: 400px;
+	top: 80px;
+}
+
+.graph div:nth-child(6){
+	left: 450px;
+	top: 240px;
+}
+
+.graph div:nth-child(7){
+	left: 600px;
+	top: 0;
+}
+
+.graph div:nth-child(8){
+	left: 600px;
+	top: 150px;
+}
+
+.graph div:nth-child(9){
+	left: 800px;
+	top: 80px;
+}
+
+/*-----------------*/
+
+.arrow {
+	font-size: 30px;
+	color: #6EB215;
+	-webkit-animation: mymove 1s infinite;
+}
+
+@-webkit-keyframes mymove {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(30px);
+	}
+}
+
+.len_result {
+	color: red;
+	-webkit-animation: mymovex 500ms infinite;
+}
+
+@-webkit-keyframes mymovex {
+	0% {transform: translateX(0px);}
+	50% {transform: translateX(30px);}
+	100% {transform: translateX(0);}
+}
+
+/*----------------------*/
+
+li > div {
+	position: relative;
+}
+
+li p {
+	line-height: 145px;
+	width: 180px;
+	text-align: center;
+}
+
+.show_path {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 150px;
+}
+
+.path_len {
+	position: absolute;
+	top: 22px;
+	right: 0;
+}
+
+.len_result {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 80px;
+	border-top: 2px solid #6EB215;
+	text-align: center;
+}
+
+.path_len div {
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	margin: 10px;
+}
+
+.node {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	margin: 10px;
+	background: orange;
+	text-align: center;
+	color: #fff;
+	border-radius: 50%;
+	font-size: 80%;
+}
+
+.next_panel {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/*----------------------------*/
+
+#myfooter > div {
+	padding: 20px;
+	text-align: center;
+}
+
+.snode {
+	display: inline-block;
+	background: red;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+}
+
+ul li:nth-child(n+2) {
+	display: none;
+}
+
+#myfooter {
+	display: none;
+}
