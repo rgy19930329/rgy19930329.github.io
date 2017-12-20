@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>富文本编辑器</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/zclip/1.1.2/jquery.zclip.min.js"></script>
+  <script type="text/javascript" src="./wangEditor/release/wangEditor.min.js"></script>
+  <style type="text/css">
+  .btn {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background: rgba(0, 0, 0, .1);
+  }
+  
+  .mt20 {
+    margin-top: 20px;
+  }
+  
+  .content-box {
+    border: 1px solid #ccc;
+    min-height: 300px;
+    padding: 10px;
+  }
+  
+  .w-e-text-container {
+    height: 500px !important;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="editor"></div>
+  <div class="mt20">
+    <button id="J-export-btn" class="btn">获取html</button>
+    <button id="J-copy-btn" class="btn">拷贝html</button>
+  </div>
+  <div id="J-content-box" class="content-box mt20"></div>
+  <script type="text/javascript">
+  var E = window.wangEditor;
+  var editor = new E('#editor');
+  editor.customConfig.height = '500px';
+  editor.customConfig.zIndex = 100;
+  editor.create();
+
+  $('#J-export-btn').on('click', function() {
+    var html = editor.txt.html();
+    $('#J-content-box').text(html);
+  });
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    if (window.clipboardData) {
+      $('#J-copy-btn').click(function() {
+        var html = editor.txt.html();
+        //
+        window.clipboardData.setData('Text', html);
+        alert('拷贝成功！');
+      });
+    } else {
+      console.log('不支持拷贝功能');
+      $('#J-copy-btn').hide();
+    }
+  });
+  </script>
+</body>
+
+</html>
