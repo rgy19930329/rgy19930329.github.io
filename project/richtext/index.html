@@ -39,6 +39,7 @@
 <body>
   <div id="editor"></div>
   <div class="mt20">
+    <button id="J-load-btn" class="btn">载入html</button>
     <button id="J-export-btn" class="btn">获取html</button>
     <button id="J-copy-btn" class="btn">拷贝html</button>
   </div>
@@ -50,9 +51,20 @@
   editor.customConfig.zIndex = 100;
   editor.create();
 
+  function escape2Html(str) {
+    var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"', '#39': '\'' };
+    return str.replace(/&(lt|gt|nbsp|amp|quot|#39);/ig, function(all, t) {
+      return arrEntities[t];
+    });
+  }
+
   $('#J-export-btn').on('click', function() {
     var html = editor.txt.html();
     $('#J-content-box').text(html);
+  });
+  $('#J-load-btn').on('click', function() {
+    var text = escape2Html(editor.txt.text());
+    editor.txt.html(text);
   });
   </script>
   <script type="text/javascript">
