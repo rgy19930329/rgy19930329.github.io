@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>富文本编辑器</title>
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.bootcss.com/zclip/1.1.2/jquery.zclip.min.js"></script>
+  <script type="text/javascript" src="./jquery-zclip/jquery.zclip.js"></script>
   <script type="text/javascript" src="./wangEditor/release/wangEditor.min.js"></script>
   <style type="text/css">
   .btn {
@@ -60,13 +60,19 @@
     if (window.clipboardData) {
       $('#J-copy-btn').click(function() {
         var html = editor.txt.html();
-        //
         window.clipboardData.setData('Text', html);
         alert('拷贝成功！');
       });
     } else {
-      console.log('不支持拷贝功能');
-      $('#J-copy-btn').hide();
+      $('#J-copy-btn').zclip({
+        path: './jquery-zclip/ZeroClipboard.swf',
+        copy: function() {
+          return 'xxxxxxxxxxxxxx';
+        },
+        afterCopy: function() {
+          alert('拷贝成功！');
+        }
+      });
     }
   });
   </script>
