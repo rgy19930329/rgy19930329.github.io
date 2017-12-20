@@ -33,6 +33,20 @@
   .w-e-text-container {
     height: 500px !important;
   }
+
+  .mask-box {
+    position: fixed;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow-y: scroll;
+    color: #000;
+    padding: 20px;
+    display: none;
+  }
   </style>
 </head>
 
@@ -42,12 +56,13 @@
     <button id="J-load-btn" class="btn">载入html</button>
     <button id="J-export-btn" class="btn">获取html</button>
     <button id="J-copy-btn" class="btn">拷贝html</button>
+    <button id="J-preview-btn" class="btn">预览html</button>
   </div>
   <div id="J-content-box" class="content-box mt20"></div>
+  <div id="J-mask-box" class="mask-box">sss</div>
   <script type="text/javascript">
   var E = window.wangEditor;
   var editor = new E('#editor');
-  editor.customConfig.height = '500px';
   editor.customConfig.zIndex = 100;
   editor.create();
 
@@ -58,13 +73,43 @@
     });
   }
 
+  function html2Escape(sHtml) {
+    return sHtml.replace(/[<>&"]/g, function(c) {
+      return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
+    });
+  }
+
+  // 格式化 html
+  function htmlFormat(html) {
+    return html.replace(/<\/[a-zA-Z]+>/g, function(all) {
+      return all + '\r\n';
+    });
+  }
+
+  // 换行
+  function breakLine(html) {
+    return html.replace(/\r\n/g, function(all) {
+      return all + '<br>';
+    });
+  }
+
   $('#J-export-btn').on('click', function() {
     var html = editor.txt.html();
-    $('#J-content-box').text(html);
+    html = htmlFormat(html);
+    html = html2Escape(html);
+    html = breakLine(html);
+    $('#J-content-box').html(html);
   });
   $('#J-load-btn').on('click', function() {
     var text = escape2Html(editor.txt.text());
     editor.txt.html(text);
+  });
+  $('#J-preview-btn').on('click', function() {
+    var html = editor.txt.html();
+    $('#J-mask-box').html(html).show();
+  });
+  $('#J-mask-box').on('click', function() {
+    $(this).hide();
   });
   </script>
   <script type="text/javascript">
