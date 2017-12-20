@@ -67,7 +67,7 @@
       $('#J-copy-btn').zclip({
         path: './jquery-zclip/ZeroClipboard.swf',
         copy: function() {
-          return 'xxxxxxxxxxxxxx';
+          return editor.txt.html();
         },
         afterCopy: function() {
           alert('拷贝成功！');
