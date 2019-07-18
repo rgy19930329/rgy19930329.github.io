@@ -9048,7 +9048,7 @@ function createMemoryHistory(props) {
 
 __webpack_require__(28);
 
-__webpack_require__(364);
+__webpack_require__(363);
 
 /***/ }),
 /* 44 */
@@ -12211,7 +12211,7 @@ exports["default"] = _default;
 
 __webpack_require__(28);
 
-__webpack_require__(363);
+__webpack_require__(364);
 
 /***/ }),
 /* 97 */
@@ -76926,13 +76926,13 @@ var _input = __webpack_require__(62);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _message2 = __webpack_require__(95);
-
-var _message3 = _interopRequireDefault(_message2);
-
 var _icon = __webpack_require__(14);
 
 var _icon2 = _interopRequireDefault(_icon);
+
+var _message2 = __webpack_require__(95);
+
+var _message3 = _interopRequireDefault(_message2);
 
 var _getPrototypeOf = __webpack_require__(17);
 
@@ -76964,9 +76964,9 @@ __webpack_require__(153);
 
 __webpack_require__(63);
 
-__webpack_require__(96);
-
 __webpack_require__(43);
+
+__webpack_require__(96);
 
 __webpack_require__(365);
 
@@ -77004,6 +77004,15 @@ var Header = (_dec = (0, _mobxReact.inject)("bookMarksStore"), _dec(_class = (0,
       value: "",
       pwd: "",
       visible: false
+    }, _this.onEnsure = function () {
+      var bookMarksStore = _this.props.bookMarksStore;
+
+      if ((0, _jsMd2.default)(_this.state.value) !== _this.state.pwd) {
+        _message3.default.error("密码错误");
+        return;
+      }
+      bookMarksStore.goEdit();
+      _this.setState({ visible: false, value: "" });
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -77052,14 +77061,7 @@ var Header = (_dec = (0, _mobxReact.inject)("bookMarksStore"), _dec(_class = (0,
             visible: this.state.visible,
             width: 300,
             title: "\u8BF7\u8F93\u5165\u5BC6\u7801",
-            onOk: function onOk() {
-              if ((0, _jsMd2.default)(_this3.state.value) !== _this3.state.pwd) {
-                _message3.default.error("密码错误");
-                return;
-              }
-              bookMarksStore.goEdit();
-              _this3.setState({ visible: false, value: "" });
-            },
+            onOk: this.onEnsure,
             onCancel: function onCancel() {
               return _this3.setState({ visible: false });
             }
@@ -77068,9 +77070,15 @@ var Header = (_dec = (0, _mobxReact.inject)("bookMarksStore"), _dec(_class = (0,
             "div",
             null,
             _react2.default.createElement(_input2.default, {
+              type: "password",
               value: this.state.value,
               onChange: function onChange(e) {
                 _this3.setState({ value: e.target.value });
+              },
+              onKeyDown: function onKeyDown(e) {
+                if (e.keyCode === 13) {
+                  _this3.onEnsure();
+                }
               }
             })
           )
